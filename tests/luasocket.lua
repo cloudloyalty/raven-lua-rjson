@@ -14,7 +14,7 @@ describe("Luasocket network layer", function()
     local socket_sender = require "raven.senders.luasocket"
     local socket = require "socket"
     local posix = require "posix"
-    local cjson = require "cjson"
+    local rjson = require "rapidjson"
     local PORT = 15514
     local server
 
@@ -40,7 +40,7 @@ describe("Luasocket network layer", function()
         end
 
         -- send the read request to the test harness
-        io.stdout:write(cjson.encode({
+        io.stdout:write(rjson.encode({
             method = method,
             uri = uri,
             headers = headers,
@@ -86,7 +86,7 @@ describe("Luasocket network layer", function()
             assert(sender:send(payload))
 
             -- check that the server got the expected data
-            local data = assert(cjson.decode(assert(posix.read(server.fd, 16*1024))))
+            local data = assert(rjson.decode(assert(posix.read(server.fd, 16*1024))))
             assert_equal("POST", data.method)
             assert_equal("/sentry/api/myproject/store/", data.uri)
             assert_equal(tostring(#payload), data.headers["content-length"])
@@ -132,7 +132,7 @@ describe("Luasocket network layer", function()
             local payload = '{ "foo": "bar" }'
             assert(sender:send(payload))
 
-            local data = assert(cjson.decode(assert(posix.read(server.fd, 16*1024))))
+            local data = assert(rjson.decode(assert(posix.read(server.fd, 16*1024))))
             assert_equal("POST", data.method)
             assert_equal("/sentry/api/myproject/store/", data.uri)
             assert_equal(tostring(#payload), data.headers["content-length"])
@@ -149,7 +149,7 @@ describe("Luasocket network layer", function()
             local payload = '{ "foo": "bar" }'
             assert(sender:send(payload))
 
-            local data = assert(cjson.decode(assert(posix.read(server.fd, 16*1024))))
+            local data = assert(rjson.decode(assert(posix.read(server.fd, 16*1024))))
             assert_equal("POST", data.method)
             assert_equal("/sentry/api/myproject/store/", data.uri)
             assert_equal(tostring(#payload), data.headers["content-length"])

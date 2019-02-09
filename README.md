@@ -1,12 +1,12 @@
-raven-lua
-=========
-
-[![Build Status](https://travis-ci.org/cloudflare/raven-lua.svg?branch=master)](https://travis-ci.org/cloudflare/raven-lua)
+raven-lua-rjson
+===============
 
 A small Lua interface to [Sentry](https://sentry.readthedocs.org/) that also
 has a helpful wrapper function `call()` that takes any arbitrary Lua function
 (with arguments) and executes it, traps any errors and reports it automatically
 to Sentry.
+
+In this fork `cjson` was replaced with `rapidjson`.
 
 Synopsis
 ========
@@ -68,7 +68,7 @@ Prerequisites
 To run the tests:
 ```
     luarocks install lunit
-    luarocks install lua-cjson
+    luarocks install rapidjson
     luarocks install luaposix
     luarocks install luasocket
     luarocks install luasec

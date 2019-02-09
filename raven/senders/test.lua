@@ -4,14 +4,14 @@
 -- @module raven.senders.test
 -- @copyright 2014-2017 CloudFlare, Inc.
 -- @license BSD 3-clause (see LICENSE file)
-local cjson = require 'cjson'
+local rjson = require 'rapidjson'
 
 
 local function new()
     return {
         events = {},
         send = function(self, json_str)
-            table.insert(self.events, cjson.decode(json_str))
+            table.insert(self.events, rjson.decode(json_str))
             return true
         end,
     }

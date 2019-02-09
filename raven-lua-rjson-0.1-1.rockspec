@@ -1,7 +1,7 @@
-package = "raven-lua"
-version = "scm-1"
+package = "raven-lua-rjson"
+version = "0.1-1"
 source = {
-   url = "https://github.com/cloudflare/raven-lua.git"
+   url = "git://github.com/cloudloyalty/raven-lua-rjson"
 }
 description = {
    detailed = [[
@@ -9,12 +9,12 @@ A small Lua interface to [Sentry](https://sentry.readthedocs.org/) that also
 has a helpful wrapper function `call()` that takes any arbitrary Lua function
 (with arguments) and executes it, traps any errors and reports it automatically
 to Sentry.]],
-   homepage = "https://github.com/cloudflare/raven-lua",
+   homepage = "https://github.com/cloudloyalty/raven-lua-rjson",
    license = "BSD 3-clause"
 }
 dependencies = {
   "lua >= 5.1",
-  "lua-cjson",
+  "rapidjson",
 }
 build = {
    type = "builtin",

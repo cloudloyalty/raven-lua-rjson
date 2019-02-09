@@ -31,7 +31,7 @@ before_script:
   - tar zxpf luarocks-${LUAROCKS_VERSION}.tar.gz
   - cd luarocks-${LUAROCKS_VERSION}
   - ./configure; sudo make bootstrap
-  - sudo luarocks install lua-cjson
+  - sudo luarocks install rapidjson
   - sudo luarocks install luaposix
   - sudo luarocks install https://raw.githubusercontent.com/jdesgats/telescope/master/rockspecs/telescope-scm-1.rockspec
   - sudo luarocks install luasocket
